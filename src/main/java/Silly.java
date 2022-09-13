@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * This file contains a few exercises to familiarize you with specific
@@ -78,7 +79,16 @@ public class Silly implements Comparable<Silly>{
      *       Afterwards, set this.name to the concatenation of both
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
+     *
+     * Creates a new Silly object,
+     * This constructur takes in two strings as the arguments
+     *
+     * @param fName the first part of the Silly instance's name.
+     * @param lName the second part of the Silly instance's name.
      */
+    public Silly(String fName, String lName) {
+        this.name = fName + lName;
+    }
 
 
 
@@ -116,7 +126,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0,1,2,3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +144,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return name;
     }
 
     /**
@@ -161,6 +172,8 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+
+        return (name.equals(other.name));
     }
 
     /**
@@ -194,6 +207,18 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        Random r = new Random();
+        int val = r.nextInt((int) Double.POSITIVE_INFINITY) + 1;
+
+        if (other.name.length() < name.length()) {
+            return val;
+        }
+        else if (other.name.length() > name.length()) {
+            return val * -1;
+        }
+        else {
+            return 0;
+        }
     }
 
     /*
